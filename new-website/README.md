@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Toran
+
+A premium Indian ethnic fashion storefront MVP with a matching admin/CMS prototype built in Next.js.
+
+## Features
+
+- Luxury storefront for Indian ethnic fashion
+- Three fixed categories:
+  - Sarees
+  - Indo-Western
+  - Kurta Pyjama
+- Product listing, collection pages, product detail pages, and cart flow
+- Simple admin interface at `/admin` for:
+  - Dashboard
+  - Products
+  - Categories
+  - Homepage Content
+  - Store Settings
+- Shared mock data layer with typed models for products, categories, homepage content, and store settings
+- Responsive design using Next.js + TypeScript + Tailwind CSS
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+   npm install
+2. Start the development server:
+   npm run dev
+3. Open http://localhost:3000
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Admin
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- http://localhost:3000/admin
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Notes
 
-## Learn More
+This project uses browser-local storage for the prototype CMS data layer. It is intended for demo use and is not a production-secure or multi-device shared backend.
 
-To learn more about Next.js, take a look at the following resources:
+## Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` - Start the app in development mode
+- `npm run build` - Build the app for production
+- `npm run start` - Start the production build
+- `npm run lint` - Run ESLint
