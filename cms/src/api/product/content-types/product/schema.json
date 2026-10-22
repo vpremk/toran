@@ -63,7 +63,7 @@
       "type": "boolean",
       "default": false
     },
-    "status": {
+    "inventoryStatus": {
       "type": "enumeration",
       "enum": [
         "in_stock",

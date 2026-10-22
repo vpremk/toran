@@ -1,3 +1,51 @@
+/**
+ * Example Postgres database config for Strapi, reading from DATABASE_URL.
+ * Place this at `cms/config/database.ts` and set DATABASE_URL in your environment.
+ */
+import { parse } from 'pg-connection-string';
+
+const url = process.env.DATABASE_URL || '';
+let parsed: ReturnType<typeof parse> | null = null;
+try {
+  parsed = url ? parse(url) : null;
+} catch (e) {
+  // fall through
+}
+
+export default ({ env }: { env: any }) => {
+  if (env('DATABASE_URL') && parsed) {
+    return {
+      connection: {
+        client: 'postgres',
+        connection: {
+          host: parsed.host,
+          port: Number(parsed.port || 5432),
+          database: parsed.database,
+          user: parsed.user,
+          password: parsed.password,
+          ssl: { rejectUnauthorized: false },
+        },
+        pool: { min: 0, max: 10 },
+      },
+    };
+  }
+
+  // Fallback to environment-based values if DATABASE_URL not present
+  return {
+    connection: {
+      client: 'postgres',
+      connection: {
+        host: env('PG_HOST', '127.0.0.1'),
+        port: env('PG_PORT', 5432),
+        database: env('PG_DATABASE', 'toran_cms'),
+        user: env('PG_USER', 'postgres'),
+        password: env('PG_PASSWORD', ''),
+        ssl: env('PG_SSL', false) ? { rejectUnauthorized: false } : false,
+      },
+      pool: { min: 0, max: 10 },
+    },
+  };
+};
 import path from 'path';
 import type { Core } from '@strapi/strapi';
 import { isDatabaseClientKind } from '@strapi/database';

@@ -547,6 +547,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.RichText;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     images: Schema.Attribute.Media<'images', true>;
+    inventoryStatus: Schema.Attribute.Enumeration<
+      ['in_stock', 'low_stock', 'out_of_stock', 'preorder']
+    > &
+      Schema.Attribute.DefaultTo<'in_stock'>;
     isNew: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -569,10 +573,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     shortDescription: Schema.Attribute.Text;
     sku: Schema.Attribute.String & Schema.Attribute.Unique;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    status: Schema.Attribute.Enumeration<
-      ['in_stock', 'low_stock', 'out_of_stock', 'preorder']
-    > &
-      Schema.Attribute.DefaultTo<'in_stock'>;
     stock: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
